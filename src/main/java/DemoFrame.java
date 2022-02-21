@@ -29,27 +29,7 @@ public class DemoFrame extends JFrame {
         DemoPanel plane = new DemoPanel(myself ,enemy, bullet);
         this.add(plane);//把Panel添加到Frame中
 
-        //6.画板更新：相交判定
-        while(true){
-            Thread.sleep(5);
-
-            enemy.setX(enemy.getX() + 1);
-            if(enemy.getX() > 500){
-                enemy.setX(0);
-            }
-
-            if(bullet.getY() < 500){
-                bullet.setY(bullet.getY() - 5);
-                Rectangle enemyRectangle = new Rectangle(enemy.getX(), enemy.getY(), enemy.getWidth(), enemy.getHeight());
-                Rectangle bulletRectangle = new Rectangle(bullet.getX(), bullet.getY(), bullet.getWidth(), bullet.getHeight());
-                if(enemyRectangle.intersects(bulletRectangle)){
-                    break;
-                }
-            }
-            plane.repaint();
-        }
-
-        //7.窗口交互：键盘监听
+        //6.窗口交互：键盘监听
         this.addKeyListener(new KeyListener() {
 
             @Override
@@ -78,6 +58,28 @@ public class DemoFrame extends JFrame {
             @Override
             public void keyReleased(KeyEvent e) {}
         });
+
+        //7.画板更新：相交判定
+        while(true){
+            Thread.sleep(5);
+
+            enemy.setX(enemy.getX() + 1);
+            if(enemy.getX() > 500){
+                enemy.setX(0);
+            }
+
+            if(bullet.getY() < 500){
+                bullet.setY(bullet.getY() - 5);
+                Rectangle enemyRectangle = new Rectangle(enemy.getX(), enemy.getY(), enemy.getWidth(), enemy.getHeight());
+                Rectangle bulletRectangle = new Rectangle(bullet.getX(), bullet.getY(), bullet.getWidth(), bullet.getHeight());
+                if(enemyRectangle.intersects(bulletRectangle)){
+                    break;
+                }
+            }
+            plane.repaint();
+        }
+
+
     }
 
     public static void main(String[] args) throws Exception{

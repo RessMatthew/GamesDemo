@@ -54,4 +54,5 @@ public class Demo {
     public void setImage(Image image) {
         this.image = image;
     }
+    //该批注为了练习Git上传蓝色文件
 }
